@@ -9,6 +9,6 @@ import Unsafe.Coerce
 
 newtype Vault s = Vault { unVault :: Map Natural Any }
 
-alterF :: (Functor f) => (Maybe a -> KeyringT s f (Maybe a)) -> Key s a -> Vault s -> KeyringT s f (Vault s)
+alterF :: (Functor f) => (Maybe a -> f (Maybe a)) -> Key s a -> Vault s -> f (Vault s)
 alterF f k = fmap Vault . Map.alterF f' (unsafeCoerce k) . unVault
-  where f' = unsafeCoerce f :: Maybe Any -> KeyringT s f (Maybe Any)
+  where f' = unsafeCoerce f :: Maybe Any -> f (Maybe Any)
