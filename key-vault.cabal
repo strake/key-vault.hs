@@ -16,7 +16,8 @@ library
   hs-source-dirs:      ., src
   exposed-modules:     Data.Vault
                      , Data.Vault.Identity
-  build-depends:       base >= 4.7 && < 5
+  build-depends:       Map
+                     , base >= 4.7 && < 5
                      , base-unicode-symbols
                      , containers
                      , key
